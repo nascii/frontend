@@ -1,0 +1,17 @@
+:global(html) {
+  height: 100%;
+}
+
+:global(#app) {
+  height: 100%;
+  padding-left: 256px;
+}
+
+:global(#app > div) {
+  height: 100%;
+}
+
+:global(body) {
+  margin: 0;
+  height: 100%;
+}

@@ -9,7 +9,7 @@ if (global.Promise == null) {
 
 module.exports = {
   displayErrorDetails: true,
-  context: __dirname + '/src',
+  context: __dirname + '/sources',
   entry: {
     app: './app.js',
     vendor: ['webpack/hot/dev-server']
@@ -27,21 +27,28 @@ module.exports = {
     inline: true
   },
   resolve: {
-    extensions: ['.css', '.js', ''],
+    extensions: ['.js', ''],
     modulesDirectories: [
-      'node_modules'
+      'node_modules',
+      'sources'
     ]
   },
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-      },
-      {
         test: /\.js/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules')
       },
       { test: /\.(png|gif|svg)$/, loader: 'file-loader?name=[path][name].[ext]' }
     ]
