@@ -1,8 +1,10 @@
 // Actions
 const SET = 'iot-frontend/appState/SET';
+const SET_CODE_ID = 'iot-frontend/appState/SET_CODE_ID';
 
 const initialState = {
-  modeId: 'network'
+  modeId: 'network',
+  appId: 'new'
 }
 
 // Reducer
@@ -14,6 +16,11 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         modeId: action.payload.id
       }
+    case SET_CODE_ID:
+      return {
+        ...state,
+        appId: action.payload.id
+      }
     default: return state;
   }
 }
@@ -21,6 +28,10 @@ export default function reducer(state = initialState, action = {}) {
 // Action Creators
 export function setAppMode(id) {
   return { type: SET, payload: {id} };
+}
+
+export function setCodeId(id) {
+  return { type: SET_CODE_ID, payload: {id} };
 }
 
 export function createWidget(widget) {

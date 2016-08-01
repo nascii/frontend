@@ -5,6 +5,7 @@ import appModes from './appModes';
 import appState from './appState';
 import devices from './devices';
 import code from './code';
+import apps from './apps';
 
 const iotApp = combineReducers({
   sensors,
@@ -12,7 +13,8 @@ const iotApp = combineReducers({
   appModes,
   appState,
   devices,
-  code
+  code,
+  apps
 });
 
 export default iotApp;

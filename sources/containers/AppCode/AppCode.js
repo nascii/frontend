@@ -1,18 +1,22 @@
 import { connect } from 'react-redux';
 
 import CodeEditor from 'components/CodeEditor';
-import { setCurrent } from 'ducks/code';
+import { setCode, submit } from 'ducks/apps';
 
 const mapStateToProps = (state) => {
   return {
-    value: state.code.current
+    id: state.appState.appId,
+    value: state.apps.filter(({id}) => id === state.appState.appId)[0].code
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: (code) => {
-      dispatch(setCurrent(code));
+    onChange: (id, code) => {
+      dispatch(setCode(id, code));
+    },
+    onSubmit: (id) => {
+      dispatch(submit(id))
     }
   }
 }

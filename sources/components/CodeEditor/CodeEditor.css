@@ -1,3 +1,24 @@
 :global(.CodeMirror) {
+  padding-left: 256px;
   height: 100%;
+}
+
+.root {
+  position: relative;
+}
+
+.submit {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+.list {
+  height: 100%;
+  width: 256px;
+  position: fixed;
+  z-index: 1100;
+  left: 256px;
+  top: 0px;
 }

@@ -63,3 +63,15 @@ export default function reducer(state = initial, action = {}) {
 export function setCurrent(code) {
   return { type: SET_CURRENT, payload: {code} };
 }
+
+export const submit = () => (dispatch, getState) => {
+  fetch('/api/apps', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: 'Code',
+      code: getState().code.current
+    })
+  })
+    .then(res => res.json())
+    .then(console.log.bind(console));
+}
